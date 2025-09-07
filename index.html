@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Website Portfolio</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="https://kit.fontawesome.com/5384bb8fee.js" crossorigin="anonymous"></script>
+    <script>
+      // Dark/Light mode toggle functionality
+      document.addEventListener('DOMContentLoaded', function() {
+        const themeSwitch = document.getElementById('theme-switch');
+        const body = document.body;
+        
+        // Check for saved theme preference or default to light mode
+        const currentTheme = localStorage.getItem('theme') || 'light';
+        body.setAttribute('data-theme', currentTheme);
+        
+        if (currentTheme === 'dark') {
+          themeSwitch.checked = true;
+        }
+        
+        // Theme toggle event listener
+        themeSwitch.addEventListener('change', function() {
+          if (this.checked) {
+            body.setAttribute('data-theme', 'dark');
+            localStorage.setItem('theme', 'dark');
+          } else {
+            body.setAttribute('data-theme', 'light');
+            localStorage.setItem('theme', 'light');
+          }
+        });
+        
+        // Debug and fix project hover effects
+        const workElements = document.querySelectorAll('.work');
+        workElements.forEach(work => {
+          work.addEventListener('mouseenter', function() {
+            this.classList.add('hover-active');
+          });
+          
+          work.addEventListener('mouseleave', function() {
+            this.classList.remove('hover-active');
+          });
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <!--Navigation bar and logo-->
+    <nav>
+      <img src="logo-removebg-preview.png" class="logo" />
+      <ul>
+        <li><a href="#header">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+      <div class="theme-toggle">
+        <input type="checkbox" id="theme-switch" class="theme-switch">
+        <label for="theme-switch" class="theme-label">
+          <i class="fas fa-sun"></i>
+          <i class="fas fa-moon"></i>
+          <span class="theme-slider"></span>
+        </label>
+      </div>
+    </nav>
+    
+    <div id="header">
+      <!--Header text are located here-->
+      <div class="Intro">
+        <img src="cassimage.png" alt="Profile picture of Cassandra Mae Mataya" class="intro-img" />
+        <div class="intro-text">
+          <h1><span>Hi, I'm Cassandra Mataya</span></h1>
+          <p class="tagline">I am a Web Developer</p>
+          <p class="intro-description">Passionate about creating innovative web solutions and user experiences. I specialize in backend development, UI design, and web security to build robust and secure applications.</p>
+          <h2><a href="#projects">View my work</a></h2>
+        </div>
+      </div>
+    </div>
+
+    
+    <!--About Me starts here-->
+    <div id="about">
+      <div class="about-content">
+        <div class="about-text">
+          <h1 class="sub-title">About Me</h1>
+          <p>
+              Hello! I'm Cassandra Mae A. Mataya, a passionate backend developer and UI designer with a strong focus on web security. I specialize in creating robust server-side solutions, crafting intuitive user interfaces, and implementing comprehensive security measures to protect web applications. My expertise spans from building scalable APIs and database architectures to designing pixel-perfect user experiences and ensuring applications are secure against modern threats. I believe in the power of clean code, user-centered design, and security-first development practices to create applications that are not only functional and beautiful but also safe and reliable.
+          </p>
+        </div>  
+
+            <div class="tab-titles">
+              <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
+              <p class="tab-links"  onclick="opentab('education')">Education</p>
+              <p class="tab-links"  onclick="opentab('experience')">Experience</p>
+            </div>
+
+            <div class="tab-contents active-tab" id="skills">
+              <ul>
+                <li>
+                  <span>Backend Development</span><br />
+                  Node.js, Python (Django, Flask), Java (Spring Boot)<br />
+                  RESTful APIs, GraphQL, Microservices Architecture
+                </li>
+                <li>
+                  <span>UI/UX Design</span><br />
+                  Figma, Adobe XD, Sketch, User Research<br />
+                  Responsive Design, Design Systems, Prototyping
+                </li>
+                <li>
+                  <span>Web Security</span><br />
+                  OWASP Top 10, Authentication & Authorization<br />
+                  SSL/TLS, Security Auditing, Penetration Testing
+                </li>
+                <li>
+                  <span>Database Technologies</span><br />
+                  PostgreSQL, MongoDB, Redis, Database Optimization<br />
+                  Data Modeling, Query Performance Tuning
+                </li>
+                <li>
+                  <span>DevOps & Tools</span><br />
+                  Docker, AWS, CI/CD Pipelines, Git<br />
+                  Monitoring, Logging, Performance Optimization
+                </li>
+              </ul>
+            </div>
+
+            <div class="tab-contents" id="education">
+                <ul>
+                  <li>
+                    <span>2023-2027</span><br>BSCS, MCL (Caraga State University)</li>
+                  <li>
+                    <span>2025-2027</span><br>MIT, Online Programming Courses</li>
+                   
+              </div>
+
+            <div class="tab-contents" id="experience">
+                <ul>
+                  <li>
+                    <span>2028</span><br>ABC Software Solutions (Brisbane, Australia) - Senior Software Engineer </li>
+                  <li>
+                    <span>2027</span><br>XYZ Tech Innovations (Quezon City, Philippines) - Software Engineer
+                  </li>
+                  <li><span>2026</span><br>Tech Start-Up (Manila, Philippines) - Junior Software Developer</li>
+                  <li><span>2026</span><br>Tech Start-Up (Manila, Philippines) - Intern</li>
+                </ul>
+              </div>
+        </div>
+      </div>
+    </div>
+
+
+    <!--portfolio-->
+    <div id="projects">
+        <div class="container">
+            <h1 class="sub-title">My Projects</h1>
+            <div class="work-list">
+                <div class="work">
+                    <img src="projone.png" alt="OMMS">
+                    <div class="layer">
+                        <h3>OMMS</h3>
+                        <p>Organizational membership management system for CSU Biology Student Society. Handles member registration, documents, and events.</p>
+                        <div class="project-details">
+                            <div class="detail-item">
+                                <strong>Duration:</strong> 6 months
+                            </div>
+                            <div class="detail-item">
+                                <strong>Users:</strong> 200+ students
+                            </div>
+                            <div class="detail-item">
+                                <strong>Features:</strong> Member portal, document management, event tracking
+                            </div>
+                        </div>
+                        <div class="tech-stack">
+                            <span class="tech-tag">PHP</span>
+                            <span class="tech-tag">MySQL</span>
+                            <span class="tech-tag">Bootstrap</span>
+                        </div>
+                        <a href="#"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+
+                <div class="work">
+                    <img src="projtu.png" alt="Biology Laboratory Sims">
+
+                    <div class="layer">
+                        <h3>Biology Laboratory Sims</h3>
+                        <p>Interactive virtual lab simulation for biology students. Features realistic equipment, experiment procedures, and safety protocols.</p>
+                        <div class="project-details">
+                            <div class="detail-item">
+                                <strong>Duration:</strong> 8 months
+                            </div>
+                            <div class="detail-item">
+                                <strong>Users:</strong> 500+ students
+                            </div>
+                            <div class="detail-item">
+                                <strong>Features:</strong> 15+ experiments, 3D models, safety tutorials
+                            </div>
+                        </div>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Unity 3D</span>
+                            <span class="tech-tag">C#</span>
+                            <span class="tech-tag">WebGL</span>
+                        </div>
+                        <a href="#"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+
+                <div class="work">
+                    <img src="projtri.png" alt="Flora and Fauna Diary">
+                    <div class="layer">
+                        <h3>Flora and Fauna Diary</h3>
+                        <p>Digital encyclopedia of global species with AI-powered classification. Features image recognition, species identification, and biodiversity education tools.</p>
+                        <div class="project-details">
+                            <div class="detail-item">
+                                <strong>Duration:</strong> 12 months
+                            </div>
+                            <div class="detail-item">
+                                <strong>Database:</strong> 10,000+ species
+                            </div>
+                            <div class="detail-item">
+                                <strong>Features:</strong> AI recognition, species ID, habitat mapping
+                            </div>
+                        </div>
+                        <div class="tech-stack">
+                            <span class="tech-tag">Python</span>
+                            <span class="tech-tag">TensorFlow</span>
+                            <span class="tech-tag">React</span>
+                        </div>
+                        <a href="#"><i class="fa-solid fa-arrow-up-right-from-square"></i></a>
+                    </div>
+                </div>
+
+
+
+            </div>
+
+            <a href="#" class="btn">View All Projects</a>
+        </div>
+    </div>
+
+    <!--Contact information-->
+
+    <div id="contact">
+        <div class="container">
+                <div class="row">
+                    <div class="contact-left">
+                        <h1 class="sub-title">Contact Me</h1>
+                        <p><i class="fa-solid fa-paper-plane"></i>cassandramataya4@gmail.com</p>
+                        <p><i class="fa-solid fa-phone"></i>+639274072393</p>
+                          <div class="social-icons">
+                          <a href="https://www.facebook.com/augustinecassie"><i class="fa-brands fa-facebook"></i></a>
+                          <a href="https://www.instagram.com/xoxoaugustinne/"><i class="fa-brands fa-instagram"></i></a>
+                          <a href="https://www.threads.net/@xoxoaugustinne"><i class="fa-brands fa-threads"></i></a>
+                          </div>
+
+                          <!--INSERT CV ATTACHMENT HERE 1:22:26-->
+                          <a href="images/CJ1_MATAYA_RESUME.docx" download class="btn btn2">Download CV</a>
+                    </div>
+
+                    <div class="contact-right">
+                        <form name="submit-to-google-sheet">
+                            <input type="text" name="Name" placeholder="Your Name" required>
+                            <input type="email" name="Email" placeholder="Your Email" required>
+                            <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
+                            <button type="submit" class="btn" class="btn2">Submit</button>
+                        </form>
+                        <span id="msg"></span>
+                    </div>
+                </div>
+        </div>
+       
+    </div>
+
+    <script>
+        var tablinks= document.getElementsByClassName ("tab-links");
+        var tabcontents= document.getElementsByClassName ("tab-contents");
+
+        function opentab (tabname) {
+            for (tablink of tablinks){
+                tablink.classList.remove("active-link");
+            }
+            for (tabcontent of tabcontents){
+                tabcontent.classList.remove("active-tab");
+            }
+            event.currentTarget.classList.add("active-link");
+            document.getElementById(tabname).classList.add("active-tab");
+
+
+        }
+
+
+    </script>
+<script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbxcZ1IhWVJ7zr13dGJooqjdgEUqH4NH2wZ14brq0mNsBUIllWKSYC5-314OBLsg0-qqrQ/exec'
+    const form = document.forms['submit-to-google-sheet']
+    const msg= document.getElementById("msg")
+  
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => {
+            msg.innerHTML="Message sent successfully"
+            setTimeout(function(){
+                msg.innerHTML=""
+        },5000)
+            form.reset()
+        })
+        
+        .catch(error => console.error('Error!', error.message))
+    })
+  </script> 
+  </body>
+</html>
